@@ -13,10 +13,11 @@ export function getEntityMetadata(apiUrl, entityName, select) {
 		.catch(console.error);
 }
 
-export function getRelatedEntityRecords(apiUrl, collectionName, select) {
+export function getRelatedEntityRecords(apiUrl, collectionName, select, orderBy) {
 	return ajax.getWithPromise(`${apiUrl}/${collectionName}?` +
 		`$select=${select.join(',')}&` +
-		`$filter=statecode eq 0`
+        `$filter=statecode eq 0` + 
+        (orderBy !== undefined ? ('&$orderby=' + orderBy) : '')
 	)
 		.then(resp => resp && JSON.parse(resp).value)
 		.catch(console.error);
