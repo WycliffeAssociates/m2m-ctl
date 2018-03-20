@@ -3,7 +3,8 @@ const	config = {
 	apiUrl: undefined,
 	schemaName: undefined,
 	displayField: undefined,
-	groupByField: undefined,
+    groupByField: undefined,
+    orderByField: undefined,
 	relationshipType: undefined,
 	thisEntity: {
 		id: undefined,

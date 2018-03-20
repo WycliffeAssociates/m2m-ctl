@@ -128,6 +128,7 @@ class AppContainer extends React.Component {
       config.schemaName = extraData.schemaName;
       config.displayField = extraData.displayField;
       config.groupByField = extraData.groupByField;
+      config.orderByField = extraData.orderByField;
       config.thisEntity.id = xrm.Page.data.entity.getId().replace(/{|}/g, '');
       config.thisEntity.name = xrm.Page.data.entity.getEntityName();
     } catch (error) {
@@ -286,7 +287,8 @@ class AppContainer extends React.Component {
             displayField,
             groupByField || '',
           // Filter out falsy elements
-          ].filter(entry => entry)
+          ].filter(entry => entry),
+          config.orderByField,
         ),
         api.getCurrentlyAssociated(
           apiUrl,
